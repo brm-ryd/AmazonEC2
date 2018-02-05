@@ -4,3 +4,5 @@ backup-script.py -> use in Amazon EC2 cloud env to backup db & create snapshot u
 file_backup.cfg as the environment setting
 
 MySQL-Checker to automate checking MySQL configuration & queries performance.
+
+Cloud provisioning using terraform.
