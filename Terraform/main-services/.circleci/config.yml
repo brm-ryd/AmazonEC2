@@ -1,0 +1,39 @@
+defaults: &defaults
+  docker:
+    # CircleCI Go images available at: https://hub.docker.com/r/circleci/golang/
+    - image: circleci/golang:1.8
+
+  working_directory: /codes/repos/AmazonEC2/Terraform/main-services
+
+  environment:
+    TEST_RESULTS: /tmp/test-results
+
+version: 2
+jobs:
+  build:
+    <<: *defaults
+    
+    steps:
+      - checkout
+      
+      - run:
+          name: Install dependencies
+          command: |
+            curl -Ls -o /tmp/terraform.zip https://releases.hashicorp.com/terraform/0.9.8/terraform_0.9.8_linux_amd64.zip
+            sudo unzip /tmp/terraform.zip -d /usr/local/bin
+            
+      - run:
+          name: Initialize Terraform
+          command: terraform init
+            
+      - run:
+          name: Terraform Plan
+          command: terraform plan -out=main.terraform
+
+      - deploy:
+          name: Deploy to AWS with Terraform
+          command: terraform apply main.terraform
+      
+    filters:
+      branches:
+        only: master
