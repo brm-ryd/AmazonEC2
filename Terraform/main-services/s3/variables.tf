@@ -1,3 +1,3 @@
 variable "application_name" {
-  description = "Name for the application"
+  description = "Testing app purposes"
 }

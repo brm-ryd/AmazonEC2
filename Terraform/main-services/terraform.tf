@@ -33,7 +33,7 @@ module "nats" {
   deployment_bucket    = "${module.s3.deployment_bucket}"
   deployment_bucket_id = "${module.s3.deployment_bucket_id}"
 
-  application_version = "1.1"
+  application_version = "1.4"
   docker_image        = "nats"
   docker_tag          = "latest"
 

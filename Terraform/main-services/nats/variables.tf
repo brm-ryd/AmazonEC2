@@ -1,9 +1,9 @@
 variable "application_name" {
-  description = "Name of your application"
+  description = "App Name testing"
 }
 
 variable "application_description" {
-  description = "Sample application based on Elastic Beanstalk & Docker"
+  description = "Elastic Beanstalk & Docker"
 }
 
 variable "application_environment" {
